@@ -1,0 +1,49 @@
+
+<div class="container mx-auto mt-16 p-4">
+    <h2 class="text-3xl font-bold mb-4">User Profile</h2>
+        <!-- Edit Profile Button -->
+
+    <!-- User Details (View Mode) -->
+    <div *ngIf="!editMode" class="mb-8">
+        <h3 class="text-xl font-semibold mb-2">User Information</h3>
+        <p><strong>Name:</strong> {{ userName }}</p>
+        <p><strong>Email:</strong> {{ userEmail }}</p>
+        <!-- Add more user details as needed -->
+
+        <!-- Edit Profile Button -->
+        <button (click)="toggleEditMode()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4">
+            Edit Profile
+        </button>
+    </div>
+
+    <!-- Edit Profile Form (Edit Mode) -->
+    <form *ngIf="editMode" (submit)="saveChanges()">
+        <h3 class="text-xl font-semibold mb-4">Edit Profile</h3>
+
+        <!-- Name Input -->
+        <div class="mb-4">
+            <label for="name" class="block text-sm font-medium text-gray-600">Name</label>
+            <!-- <input type="text" id="name" name="name" [(ngModel)]="userName" class="mt-1 p-2 w-full border rounded-md"> -->
+            <input type="text" id="name" name="name"  class="mt-1 p-2 w-full border rounded-md">
+        </div>
+
+        <!-- Email Input -->
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
+            <!-- <input type="email" id="email" name="email" [(ngModel)]="userEmail" class="mt-1 p-2 w-full border rounded-md"> -->
+            <input type="email" id="email" name="email" class="mt-1 p-2 w-full border rounded-md">
+        </div>
+
+        <!-- Additional form fields as needed -->
+
+        <!-- Save Changes Button -->
+        <div class="flex justify-between">
+            <button type="button" (click)="cancelEdit()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">
+                Cancel
+            </button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                Save Changes
+            </button>
+        </div>
+    </form>
+</div>

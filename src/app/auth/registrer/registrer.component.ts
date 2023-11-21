@@ -5,6 +5,10 @@ import { UsersService } from 'src/app/shared/services/users.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user.model';
 
+const EMAIL_PATTERN =
+"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
 @Component({
   selector: 'app-registrer',
   templateUrl: './registrer.component.html',
@@ -18,7 +22,7 @@ export class RegistrerComponent implements OnInit {
     
     ngOnInit(): void {
         this.form = new FormGroup({
-            'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
+            'email': new FormControl(null, [Validators.required, Validators.email, Validators.pattern(EMAIL_PATTERN)], this.forbiddenEmails.bind(this)),
             'name': new FormControl(null, [Validators.required]),
             'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
             'agree': new FormControl(true, [Validators.requiredTrue])

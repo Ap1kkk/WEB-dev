@@ -9,21 +9,27 @@ import {AppComponent} from "./app.component";
 import { AppRoutingModule } from './app-routing.module';
 import { UsersService } from './shared/services/users.service';
 import { AuthService } from './shared/services/auth.service';
+import { SystemComponent } from './system/system.component';
+import { SharedModule } from "./shared/shared.module";
+import { SystemModule } from './system/system.module';
 
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AuthModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-  ],
-  providers: [UsersService, AuthService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        SystemComponent,
+    ],
+    providers: [UsersService, AuthService],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AuthModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        SystemModule,
+        SharedModule
+    ]
 })
 export class AppModule { }
