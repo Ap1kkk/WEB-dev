@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-profile-page.component.css']
 })
 export class UserProfilePageComponent {
-    userName = 'John Doe';
-    userEmail = 'john.doe@example.com';
+    userName = 'Test test';
+    userEmail = 'test@test.test';
     editMode = false;
   
     toggleEditMode() {

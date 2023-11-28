@@ -33,7 +33,7 @@ export function integrate()
         updateBannerVisibility();
     }
 
-    var buildUrl = "../../../../assets/unity/Build";
+    var buildUrl = "../../../assets/unity/Build";
     var loaderUrl = buildUrl + "/test.loader.js";
     var config = {
         dataUrl: buildUrl + "/test.data",

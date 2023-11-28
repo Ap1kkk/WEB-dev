@@ -52,6 +52,12 @@
       "password": "123123123",
       "name": "123123",
       "id": 6
+    },
+    {
+      "email": "ApikMer2@yandex.ru",
+      "password": "123123123",
+      "name": "123123",
+      "id": 7
     }
   ]
 }
