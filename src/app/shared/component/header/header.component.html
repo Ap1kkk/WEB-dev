@@ -1,10 +1,11 @@
 <header class="bg-gray-800 text-white py-4">
     <div class="container mx-auto flex justify-between items-center">
         <h1 class="text-2xl font-bold"><a href="/system/main" class="text-white hover:text-teal-400 mr-4">Evolution clicker</a></h1>
-        <nav>
+        <nav class="flex">
             <!-- <a href="/login" class="text-white hover:text-teal-400 mr-4"> -->
-            <a href="/system/user-profile" class="text-white hover:text-teal-400 mr-4">
+            <a href="/system/user-profile" class="flex text-white hover:text-teal-400 mr-4">
                 <fa-icon [icon]="faUser"></fa-icon>
+                <p class="ml-4">{{user.name}}</p>
             </a>
             <a href="/system/scoreboard" class="text-white hover:text-teal-400 mr-4">Scoreboard</a>
             <a href="/system/game" class="text-white hover:text-teal-400">Play</a>

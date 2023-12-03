@@ -6,37 +6,50 @@
     <!-- User Details (View Mode) -->
     <div *ngIf="!editMode" class="mb-8">
         <h3 class="text-xl font-semibold mb-2">User Information</h3>
-        <p><strong>Name:</strong> {{ userName }}</p>
-        <p><strong>Email:</strong> {{ userEmail }}</p>
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Clicked value:</strong> {{ user.clickedValue}}</p>
         <!-- Add more user details as needed -->
 
-        <!-- Edit Profile Button -->
-        <button (click)="toggleEditMode()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4">
-            Edit Profile
-        </button>
+        <div class="flex flex-col">
+            <button (click)="logout()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4">
+                Log out
+            </button>
+            <button (click)="deleteAccount()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4">
+                Delete account
+            </button>
+            <!-- Edit Profile Button -->
+            <button (click)="toggleEditMode()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4">
+                Edit Profile
+            </button>
+        </div>
     </div>
 
-    <!-- Edit Profile Form (Edit Mode) -->
-    <form *ngIf="editMode" (submit)="saveChanges()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" method="post" *ngIf="editMode">
         <h3 class="text-xl font-semibold mb-4">Edit Profile</h3>
 
-        <!-- Name Input -->
-        <div class="mb-4">
-            <label for="name" class="block text-sm font-medium text-gray-600">Name</label>
-            <!-- <input type="text" id="name" name="name" [(ngModel)]="userName" class="mt-1 p-2 w-full border rounded-md"> -->
-            <input type="text" id="name" name="name"  class="mt-1 p-2 w-full border rounded-md">
+        <div class="alert alert-{{ message.type }} text-yellow-400" *ngIf="message.text">
+            {{ message.text }}
         </div>
 
-        <!-- Email Input -->
         <div class="mb-4">
-            <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
-            <!-- <input type="email" id="email" name="email" [(ngModel)]="userEmail" class="mt-1 p-2 w-full border rounded-md"> -->
-            <input type="email" id="email" name="email" class="mt-1 p-2 w-full border rounded-md">
+            <label for="name" class="block text-sm font-medium text-gray-100">Name</label>
+            <input type="text" id="name" name="name" [placeholder]="user.name" [value]="user.name"formControlName="name" required
+            class="mt-1 p-2 w-full border rounded-md text-gray-800" >
         </div>
 
-        <!-- Additional form fields as needed -->
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-100">Email</label>
+            <input type="email" id="email" name="email" [placeholder]="user.email" [value]="user.email" formControlName="email" required
+            class="mt-1 p-2 w-full border rounded-md text-gray-800" >
+        </div>
 
-        <!-- Save Changes Button -->
+        <div class="mb-4">
+            <label for="clickedValue" class="block text-sm font-medium text-gray-100">Clicked value</label>
+            <input type="clickedValue" id="clickedValue" name="clickedValue" [placeholder]="user.clickedValue" [value]="user.clickedValue" formControlName="clickedValue" required
+            class="mt-1 p-2 w-full border rounded-md text-gray-800" >
+        </div>
+        
         <div class="flex justify-between">
             <button type="button" (click)="cancelEdit()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">
                 Cancel

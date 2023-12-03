@@ -20,4 +20,9 @@ export class UnityComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
       integrate();
     }
+
+    changeClickedValue(value:number)
+    {
+        
+    }
 }

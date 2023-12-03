@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
     .subscribe((user: User) => {
         if (user) {
           if (user.password === formData.password) {
-            window.localStorage.setItem('user', JSON.stringify(user));
-            this.authService.login();
+            this.authService.login(user);
+            this.router.navigate(['/system/main'])
           } else {
             this.showMessage({
               text: 'Пароль не верный',

@@ -31,7 +31,7 @@ export class RegistrerComponent implements OnInit {
 
     onSubmit() {
         const {email, password, name} = this.form.value;
-        const user = new User(email, password, name);
+        const user = new User(email, password, name, 0);
       
         this.usersService.createUser(user)
           .subscribe(() => {

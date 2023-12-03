@@ -18,46 +18,11 @@
   },
   "users": [
     {
-      "id": 1,
-      "email": "132@123.123",
-      "password": "123123",
-      "name": "123123"
-    },
-    {
-      "email": "ApikMaster2@yandex.ru",
+      "email": "ApikMaster3@yandex.ru",
       "password": "123123123",
-      "name": "Ap1k",
-      "id": 2
-    },
-    {
-      "email": "ApikMaster2@yandex.ru",
-      "password": "123123123",
-      "name": "123123",
-      "id": 3
-    },
-    {
-      "email": "ApikMaster2@yandex.ru",
-      "password": "123123123",
-      "name": "123123",
-      "id": 4
-    },
-    {
-      "email": "ApikMaster@yandex.ru",
-      "password": "123123123",
-      "name": "Ap1k",
-      "id": 5
-    },
-    {
-      "email": "ApikMaster@yandex.r",
-      "password": "123123123",
-      "name": "123123",
-      "id": 6
-    },
-    {
-      "email": "ApikMer2@yandex.ru",
-      "password": "123123123",
-      "name": "123123",
-      "id": 7
+      "name": "12312",
+      "clickedValue": 0,
+      "id": 1
     }
   ]
 }
