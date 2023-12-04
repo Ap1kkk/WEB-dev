@@ -1,15 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/shared/models/user.model';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-scoreboard-page',
   templateUrl: './scoreboard-page.component.html',
   styleUrls: ['./scoreboard-page.component.css']
 })
-export class ScoreboardPageComponent {
-    scoreboardData = [
-        { rank: 1, name: 'Player 1', score: 100 },
-        { rank: 2, name: 'Player 2', score: 90 },
-        { rank: 3, name: 'Player 3', score: 80 },
-        // Add more scoreboard data as needed
-      ];
+export class ScoreboardPageComponent implements OnInit{
+    users!: Array<User>;
+    constructor(private usersService:UsersService)
+    {}
+    
+    ngOnInit(): void {
+        this.usersService.getUsers()
+        .subscribe(users => {
+            this.users = users as Array<User>
+            this.sortUsersByScore()
+        })
+    }
+
+    private sortUsersByScore() {
+        this.users.sort((a, b) => (a.clickedValue > b.clickedValue ? -1 : 1));
+    }
 }

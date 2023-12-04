@@ -37,17 +37,18 @@ export class UserProfilePageComponent implements OnInit, OnDestroy{
         this.subscription.unsubscribe();
     }
     ngOnInit(): void {
+        this.user = this.authService.CurrentUser;
         this.message = new Message('danger', '');
 
         this.form = new FormGroup({
-            'name': new FormControl(null, [Validators.required, Validators.minLength(8)]),
+            'name': new FormControl(null, [Validators.required, Validators.minLength(4)]),
+            'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
             'email': new FormControl(null, [Validators.required, Validators.email, Validators.pattern(EMAIL_PATTERN)]),
             'clickedValue': new FormControl(null, [Validators.required]),
           });
           this.form.value.name = this.user.name;
           this.form.value.email = this.user.email;
           this.form.value.clickedValue = this.user.clickedValue;
-          console.log(this.form)
     }
 
 
@@ -77,8 +78,6 @@ export class UserProfilePageComponent implements OnInit, OnDestroy{
 
     onSubmit()
     {
-        let validator = Validators.pattern(EMAIL_PATTERN)
-
         let formData = this.form.value;
 
         if(formData.name == null || formData.name == '')
@@ -88,6 +87,10 @@ export class UserProfilePageComponent implements OnInit, OnDestroy{
         if(formData.email == null || formData.email == '')
         {
             formData.email = this.user.email;
+        }
+        if(formData.password == null || formData.password == '')
+        {
+            formData.password = this.user.password;
         }
         if(formData.clickedValue == null)
         {
@@ -109,7 +112,7 @@ export class UserProfilePageComponent implements OnInit, OnDestroy{
         console.log(formData)
 
         let newUser = new User(formData.email, this.user.password, formData.name, formData.clickedValue, this.user.id); 
-        this.usersService.getUsers(formData.email)
+        this.usersService.getUser(formData.email)
         .subscribe((user: User) => {
             if (user) {
                 if(this.user.email !== user.email)

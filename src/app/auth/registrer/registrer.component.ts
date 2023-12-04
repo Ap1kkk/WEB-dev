@@ -45,7 +45,7 @@ export class RegistrerComponent implements OnInit {
 
     forbiddenEmails(control: AbstractControl): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.usersService.getUsers(control.value)
+            this.usersService.getUser(control.value)
             .subscribe((user: User) => {
                 if (user) {
                 resolve({forbiddenEmail: true});

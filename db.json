@@ -18,11 +18,18 @@
   },
   "users": [
     {
-      "email": "ApikMaster3@yandex.ru",
+      "email": "apikmaster@yandex.ru",
       "password": "123123123",
-      "name": "12312",
+      "name": "Ap1kkk",
+      "clickedValue": "10",
+      "id": 2
+    },
+    {
+      "email": "ApikMaster2@yandex.ru",
+      "password": "123123123",
+      "name": "123123",
       "clickedValue": 0,
-      "id": 1
+      "id": 3
     }
   ]
 }

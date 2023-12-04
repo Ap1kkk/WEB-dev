@@ -18,7 +18,11 @@ export class AuthService {
     constructor(private usersService: UsersService)
     {
         this.usersService.getUserChangedEmitter()
-        .subscribe(user => this.emitUserChangedEvent(user))
+        .subscribe(user => {
+            window.localStorage.clear();
+            window.localStorage.setItem('user', JSON.stringify(user));
+            this.emitUserChangedEvent(user)
+        })
     }
 
     public get CurrentUser(): User {

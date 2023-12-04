@@ -15,10 +15,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let player of scoreboardData">
-                    <td class="py-2 px-4 border-b">{{ player.rank }}</td>
+                <tr *ngFor="let player of users; index as i">
+                    <td class="py-2 px-4 border-b">{{ i + 1 }}</td>
                     <td class="py-2 px-4 border-b">{{ player.name }}</td>
-                    <td class="py-2 px-4 border-b">{{ player.score }}</td>
+                    <td class="py-2 px-4 border-b">{{ player.clickedValue }}</td>
                     <!-- Add more table cells as needed -->
                 </tr>
             </tbody>

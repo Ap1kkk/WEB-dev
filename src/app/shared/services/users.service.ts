@@ -17,7 +17,12 @@ export class UsersService {
 
     constructor(private http: HttpClient) {
     }
-    getUsers(email: string): Observable<User> {
+
+    getUsers() {
+        return this.http.get(`http://localhost:3000/users`);
+    }
+
+    getUser(email: string): Observable<User> {
         return this.http.get(`http://localhost:3000/users?email=${email}`)
         .pipe(map((user: any) => user[0] ? user[0] : undefined));
     }

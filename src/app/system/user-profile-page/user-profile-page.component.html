@@ -38,10 +38,27 @@
             class="mt-1 p-2 w-full border rounded-md text-gray-800" >
         </div>
 
-        <div class="mb-4">
+        <div class="mb-4" [ngClass]="{'has-error': form.get('email')?.invalid && form.get('email')?.touched}">
             <label for="email" class="block text-sm font-medium text-gray-100">Email</label>
             <input type="email" id="email" name="email" [placeholder]="user.email" [value]="user.email" formControlName="email" required
             class="mt-1 p-2 w-full border rounded-md text-gray-800" >
+        </div>
+
+        <div class="mb-4" [ngClass]="{'has-error': form.get('password')?.invalid && form.get('password')?.touched}">
+            <label for="password" class="block text-sm font-medium text-gray-100">Password</label>
+            <input type="password" id="password" name="password" [placeholder]="user.password" [value]="user.password" formControlName="password" required
+            class="mt-1 p-2 w-full border rounded-md text-gray-800" >
+            <span class="form-help-text text-yellow-400"
+                *ngIf="form.get('password').invalid && form.get('password').touched">
+                <span *ngIf="form.get('password')['errors']['required']">
+                    Пароль не может быть пустым.
+                </span>
+                <span *ngIf="form.get('password')['errors']['minlength'] &&
+                    form.get('password')['errors']['minlength']['requiredLength']">
+                    Пароль должен быть больше {{ form.get("password")["errors"]["minlength"]["requiredLength"] }}
+                    символов. Сейчас {{ form.get("password")["errors"]["minlength"]["actualLength"] }}.
+                </span>
+            </span>
         </div>
 
         <div class="mb-4">
@@ -54,7 +71,7 @@
             <button type="button" (click)="cancelEdit()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">
                 Cancel
             </button>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" [disabled]="form.invalid">
                 Save Changes
             </button>
         </div>
