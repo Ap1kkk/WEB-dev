@@ -1,26 +1,26 @@
 
-<div class="container mx-auto mt-16 p-4">
-    <h2 class="text-3xl font-bold mb-4">User Profile</h2>
+<div class="container mx-auto mt-16 p-4 flex flex-col justify-center items-center">
+    <h2 class="text-3xl font-bold mb-4">Профиль пользователя</h2>
         <!-- Edit Profile Button -->
 
     <!-- User Details (View Mode) -->
     <div *ngIf="!editMode" class="mb-8">
-        <h3 class="text-xl font-semibold mb-2">User Information</h3>
-        <p><strong>Name:</strong> {{ user.name }}</p>
+        <h3 class="text-xl font-semibold mb-2">Ваши данные</h3>
+        <p><strong>Имя пользователя</strong> {{ user.name }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Clicked value:</strong> {{ user.clickedValue}}</p>
+        <p><strong>Общее количество кликов:</strong> {{ user.clickedValue}}</p>
         <!-- Add more user details as needed -->
 
-        <div class="flex flex-col">
-            <button (click)="logout()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4">
-                Log out
+        <div class="flex flex-col max-w-xl">
+            <button (click)="logout()" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full mt-4">
+                Выйти
             </button>
-            <button (click)="deleteAccount()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4">
-                Delete account
+            <button (click)="deleteAccount()" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full mt-4">
+                Удалить аккаунт
             </button>
             <!-- Edit Profile Button -->
-            <button (click)="toggleEditMode()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4">
-                Edit Profile
+            <button (click)="toggleEditMode()" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full mt-4">
+                Редактировать профиль
             </button>
         </div>
     </div>
@@ -71,7 +71,7 @@
             <button type="button" (click)="cancelEdit()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">
                 Cancel
             </button>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" [disabled]="form.invalid">
+            <button type="submit" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full" [disabled]="form.invalid">
                 Save Changes
             </button>
         </div>

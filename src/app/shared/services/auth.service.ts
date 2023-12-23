@@ -15,6 +15,7 @@ export class AuthService {
         return this.userChanged;
     }
 
+
     constructor(private usersService: UsersService)
     {
         this.usersService.getUserChangedEmitter()
@@ -29,21 +30,32 @@ export class AuthService {
         return JSON.parse(window.localStorage.getItem("user")!);
     }
     
-    private isAuthenticated = false;
+    private _isAuthenticated = false;
 
     login(user:User) {
-      this.isAuthenticated = true;
+      this._isAuthenticated = true;
       window.localStorage.setItem('user', JSON.stringify(user));
       this.userChanged.emit(this.CurrentUser);
       console.log(this.CurrentUser);
     }
   
     logout() {
-        this.isAuthenticated = false;
+        this._isAuthenticated = false;
         window.localStorage.clear();
     }
   
-    isLoggedIn(): boolean {
-      return this.isAuthenticated;
+    isAuthenticated(): boolean {
+      if(this.CurrentUser)
+      {
+        return true;
+      }
+      return false;
+    }
+    
+    isUserAdmin(): boolean
+    {
+        if(this._isAuthenticated)
+            return this.CurrentUser.isAdmin;
+        return false;
     }
   }

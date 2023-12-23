@@ -12,6 +12,7 @@ import { AuthService } from './shared/services/auth.service';
 import { SystemComponent } from './system/system.component';
 import { SharedModule } from "./shared/shared.module";
 import { SystemModule } from './system/system.module';
+import { AdminGuard } from './shared/guards/admin.guard';
 
 
 @NgModule({

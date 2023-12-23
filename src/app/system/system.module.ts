@@ -7,6 +7,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { UserProfilePageComponent } from "./user-profile-page/user-profile-page.component";
 import { ScoreboardPageComponent } from "./scoreboard-page/scoreboard-page.component";
 import { UnityComponent } from './unity/unity.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { UnityComponent } from './unity/unity.component';
         MainPageComponent,
         UserProfilePageComponent,
         ScoreboardPageComponent,
-        UnityComponent
+        UnityComponent,
+        AdminPanelComponent
   ]
 })
 export class SystemModule {
